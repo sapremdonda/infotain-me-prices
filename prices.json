@@ -1,0 +1,46 @@
+{
+ "version": 1,
+ "date": "2026-11-27",
+ "places": [
+  {
+   "state": "Delhi",
+   "city": "Delhi",
+   "aliases": [
+    "New Delhi"
+   ],
+   "petrol": 102.12,
+   "diesel": 95.2,
+   "cng": null
+  },
+  {
+   "state": "Maharashtra",
+   "city": "Mumbai",
+   "aliases": [
+    "Bombay"
+   ],
+   "petrol": 111.21,
+   "diesel": 97.83,
+   "cng": null
+  },
+  {
+   "state": "Tamil Nadu",
+   "city": "Chennai",
+   "aliases": [
+    "Madras"
+   ],
+   "petrol": 107.77,
+   "diesel": 99.55,
+   "cng": null
+  },
+  {
+   "state": "West Bengal",
+   "city": "Kolkata",
+   "aliases": [
+    "Calcutta"
+   ],
+   "petrol": 113.51,
+   "diesel": 99.82,
+   "cng": null
+  }
+ ]
+}

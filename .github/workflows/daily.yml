@@ -1,0 +1,34 @@
+name: Daily fuel prices
+
+# Prices change at 6 am IST; this runs at 6:20 am IST (00:50 UTC) and can be run by hand.
+on:
+  schedule:
+    - cron: "50 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install the PDF reader
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq --no-install-recommends poppler-utils
+      - name: Build prices.json
+        run: python build_prices.py
+      - name: Publish if changed
+        run: |
+          if [ -z "$(git status --porcelain -- prices.json)" ]; then
+            echo "No change today."
+            exit 0
+          fi
+          git config user.name "infotain-prices-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add prices.json
+          git commit -m "Prices for $(TZ=Asia/Kolkata date +%F)"
+          git push
